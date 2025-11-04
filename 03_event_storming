@@ -1,473 +1,55 @@
-Event Storming – AS-IS
-AKTORZY:
-👤 Użytkownik
-🔧 Administrator Floowe
-🌐 API Zewnętrzne (Facebook, LinkedIn, X/Twitter)
-🤖 Silnik AI/Copywriting
-📊 System Analityczny SEO
-🔌 Plugin Strony WWW
+# Event Storming – AS-IS (Obecny stan aplikacji)
 
-═══════════════════════════════════════════════════════════════════
+## Aktorzy
+- Użytkownik
+- Administrator Floowe
+- API Social Media
+- Silnik AI
+- System SEO
+- Plugin WWW
 
-PROCES 1: REJESTRACJA I KONFIGURACJA KONTA
-────────────────────────────────────────────────────────────────
-
-👤 → [Użytkownik wybiera plan] 
-    ↓
-    📋 Event: PlanWybrany
-    ↓
-👤 → [Użytkownik wprowadza dane o działalności i grupie docelowej]
-    ↓
-    📋 Event: DaneDostarczono
-    ↓
-🔧 → [System tworzy profil użytkownika]
-    ↓
-    📋 Event: KontoUtworzono
-    ↓
-    ✅ Użytkownik ma dostęp do aplikacji
-
-
-═══════════════════════════════════════════════════════════════════
-
-PROCES 2: GENEROWANIE ARTYKUŁU Z SUGESTIAMI AI
-────────────────────────────────────────────────────────────────
-
-👤 → [Użytkownik loguje się do systemu]
-    ↓
-    📋 Event: UżytkownikZalogowany
-    ↓
-📊 → [System Analityczny SEO analizuje branżę użytkownika]
-    ↓
-    📋 Event: BranżaPrzeanalizowana
-    ↓
-📊 → [System wyszukuje popularne treści w wyszukiwarkach]
-    ↓
-    📋 Event: TrendyZidentyfikowane
-    ↓
-🤖 → [Silnik AI generuje listę pomysłów na artykuły]
-    ↓
-    📋 Event: PomysłyWygenerowane
-    ↓
-👤 → [Użytkownik wybiera pomysł z listy]
-    ↓
-    📋 Event: PomysłWybrany
-    ↓
-🤖 → [Silnik AI generuje treść artykułu z optymalizacją SEO]
-    ↓
-    📋 Event: ArtykułWygenerowany
-    ↓
-    ✅ Artykuł gotowy do edycji/publikacji
-
-
-═══════════════════════════════════════════════════════════════════
-
-PROCES 3: EDYCJA ARTYKUŁU I DODAWANIE GRAFIK
-────────────────────────────────────────────────────────────────
-
-👤 → [Użytkownik otwiera artykuł w edytorze]
-    ↓
-    📋 Event: ArtykułOtwarto
-    ↓
-👤 → [Użytkownik modyfikuje treść (edytor WORD-like)]
-    ↓
-    📋 Event: TreśćZmodyfikowana
-    ↓
-👤 → [Użytkownik dodaje/edytuje grafikę]
-    |
-    ├── Własne zdjęcie
-    ├── Zdjęcia z bezpłatnej bazy (licencjonowane)
-    └── Zdjęcia generowane przez AI
-    ↓
-    📋 Event: GrafikaWybrana
-    ↓
-👤 → [Użytkownik zapisuje zmiany]
-    ↓
-    📋 Event: ArtykułZaktualizowany
-    ↓
-    ✅ Artykuł gotowy do publikacji
-
-
-═══════════════════════════════════════════════════════════════════
-
-PROCES 4: PUBLIKACJA NA STRONIE INTERNETOWEJ
-────────────────────────────────────────────────────────────────
-
-👤 → [Użytkownik instaluje plugin na swojej stronie]
-    ↓
-    📋 Event: PluginZainstalowany
-    ↓
-🔌 → [Plugin łączy się z systemem Floowe]
-    ↓
-    📋 Event: PluginPołączony
-    ↓
-👤 → [Użytkownik wybiera artykuł i klika "Publikuj na stronie"]
-    ↓
-    📋 Event: PublikacjaZainicjowana
-    ↓
-🔌 → [Plugin publikuje artykuł na stronie użytkownika]
-    ↓
-    📋 Event: ArtykułOpublikowany
-    ↓
-    ✅ Artykuł widoczny na stronie WWW
-
-
-═══════════════════════════════════════════════════════════════════
-
-PROCES 5: PUBLIKACJA W SOCIAL MEDIA
-────────────────────────────────────────────────────────────────
-
-👤 → [Użytkownik łączy konta social media (FB, LinkedIn, X)]
-    ↓
-    📋 Event: KontaSocialMediaPołączone
-    ↓
-🤖 → [System automatycznie generuje posty na podstawie artykułu]
-    ↓
-    📋 Event: PostyAutomatycznieWygenerowane
-    ↓
-👤 → [Użytkownik przegląda wygenerowane posty]
-    ↓
-    📋 Event: PostyPrzejrzane
-    ↓
-👤 → [Użytkownik klika "Publikuj" (jeden ruch)]
-    ↓
-    📋 Event: PublikacjaSocialMediaZainicjowana
-    ↓
-🌐 → [API Facebook publikuje post]
-    ↓
-    📋 Event: PostOpublikowanNaFacebook
-    ↓
-🌐 → [API LinkedIn publikuje post]
-    ↓
-    📋 Event: PostOpublikowanNaLinkedIn
-    ↓
-🌐 → [API X/Twitter publikuje post]
-    ↓
-    📋 Event: PostOpublikowanNaX
-    ↓
-    ✅ Treści opublikowane na wszystkich platformach
-```
+## Główne procesy
+- Rejestracja konta: wybór planu, podanie danych, utworzenie konta
+- Generowanie artykułu: analiza branży, propozycje tematów, generowanie treści SEO
+- Edycja artykułu i grafiki: modyfikacja tekstu i dodawanie obrazów
+- Publikacja: jeden klik, plugin oraz API publikujące artykuł na stronie i w social media
+- Integracje: szybkie podpięcie do Facebook, LinkedIn, X/Twitter oraz do pluginu WWW
+- Procesy sprowadzają się do sekwencji: akcja użytkownika → event systemowy → wynik dostępny/widoczny dla użytkownika
 
 ---
 
-# Event Storming – TO-BE (Proponowane nowe funkcje)
+# Event Storming – TO-BE (Propozycje nowych funkcji)
 
-## Nowe funkcje i odpowiadające im wydarzenia
+## 1. Harmonogram publikacji i kalendarz treści
+- Planowanie publikacji w czasie (kalendarz, automatyczne publikowanie, system powiadomień)
+- Ułatwia zarządzanie cyklem publikacji i minimalizowanie ręcznej pracy
 
-### NOWA FUNKCJA 1: HARMONOGRAM PUBLIKACJI I KALENDARZ TREŚCI
+## 2. Zaawansowana analityka i raportowanie skuteczności treści
+- Monitoring wyników (wyświetlenia, zaangażowanie, pozycje SEO)
+- Integracje z narzędziami analitycznymi (Google Analytics, Facebook Insights)
+- Dashboard i rekomendacje optymalizacyjne
 
-**Opis:** Użytkownik może planować publikacje z wyprzedzeniem, tworząc harmonogram treści na nadchodzące tygodnie/miesiące.
-```
-NOWI AKTORZY:
-⏰ System Harmonogramu
-📅 Kalendarz Treści
+## 3. A/B testowanie treści
+- Tworzenie wariantów artykułu/postu, automatyczne testowanie skuteczności
+- System wyłaniający zwycięski wariant na podstawie danych
 
-────────────────────────────────────────────────────────────────
+## 4. Biblioteka treści i ponowne wykorzystanie
+- Repozytorium artykułów/tagowanie/kategoriazacja, AI do recyklingu starszych treści
+- Ułatwienie zarządzania contentem i efektywności archiwów
 
-PROCES TO-BE 1: PLANOWANIE PUBLIKACJI
-────────────────────────────────────────────────────────────────
-
-👤 → [Użytkownik tworzy harmonogram publikacji]
-    ↓
-    📋 Event: HarmonogramUtworzony
-    ↓
-👤 → [Użytkownik przypisuje artykuły do dat w kalendarzu]
-    ↓
-    📋 Event: ArtykułPrzypisanyDoDaty
-    ↓
-👤 → [Użytkownik ustawia godzinę publikacji]
-    ↓
-    📋 Event: CzasPublikacjiUstawiony
-    ↓
-⏰ → [System Harmonogramu monitoruje zaplanowane publikacje]
-    ↓
-    📋 Event: HarmonogramAktywny
-    ↓
-⏰ → [O wyznaczonej godzinie System uruchamia publikację]
-    ↓
-    📋 Event: AutomatycznaPublikacjaUruchomiona
-    ↓
-🔌/🌐 → [Treść publikowana na stronie i/lub social media]
-    ↓
-    📋 Event: ZaplanowanaPublikacjaZrealizowana
-    ↓
-👤 → [Użytkownik otrzymuje powiadomienie o publikacji]
-    ↓
-    📋 Event: PowiadomienieWysłane
-    ↓
-    ✅ Publikacja zrealizowana zgodnie z harmonogramem
-```
-
-**Aktorzy:** Użytkownik, System Harmonogramu, Plugin WWW, API Social Media  
-**Integracje:** Istniejące API social media, Plugin strony, nowy moduł harmonogramu  
-**Zmiany względem AS-IS:** 
-- Dodanie warstwy planowania czasowego
-- Automatyczne uruchamianie publikacji bez obecności użytkownika
-- System powiadomień o zrealizowanych publikacjach
+## 5. Workflow zespołowy (współpraca)
+- Role (twórca, edytor, zatwierdzający)
+- Komentarze, system wersji, powiadomienia i zatwierdzanie treści
+- Kluczowe dla zespołów i firm prosperujących na rozbudowanych contentach
 
 ---
 
-### NOWA FUNKCJA 2: ANALITYKA I RAPORTOWANIE SKUTECZNOŚCI TREŚCI
+# Podsumowanie zmian TO-BE względem AS-IS
 
-**Opis:** System monitoruje wydajność opublikowanych treści (wyświetlenia, zaangażowanie, SEO) i generuje raporty.
-```
-NOWI AKTORZY:
-📈 System Analityczny
-🔍 Google Analytics API
-📱 Facebook/LinkedIn/X Analytics API
-🎯 Moduł Śledzenia Konwersji
-
-────────────────────────────────────────────────────────────────
-
-PROCES TO-BE 2: MONITOROWANIE I RAPORTOWANIE
-────────────────────────────────────────────────────────────────
-
-🔌 → [Plugin zbiera dane o wyświetleniach artykułu na stronie]
-    ↓
-    📋 Event: DaneStronaZebrane
-    ↓
-🌐 → [API Social Media pobierają dane o zaangażowaniu postów]
-    ↓
-    📋 Event: DaneSocialMediaZebrane
-    ↓
-🔍 → [Google Analytics API dostarcza dane o ruchu i SEO]
-    ↓
-    📋 Event: DaneSEOZebrane
-    ↓
-📈 → [System Analityczny agreguje wszystkie dane]
-    ↓
-    📋 Event: DaneZagregowane
-    ↓
-📈 → [System generuje raporty wydajności]
-    ↓
-    📋 Event: RaportWygenerowany
-    ↓
-👤 → [Użytkownik przegląda dashboard z analityką]
-    ↓
-    📋 Event: DashboardOtwarty
-    ↓
-📈 → [System rekomenduje optymalizacje na podstawie danych]
-    ↓
-    📋 Event: RekomendacjeWygenerowane
-    ↓
-    ✅ Użytkownik otrzymuje wgląd w skuteczność treści
-```
-
-**Aktorzy:** Użytkownik, System Analityczny, Google Analytics API, Facebook/LinkedIn/X Analytics API  
-**Integracje:** Google Analytics, Facebook Insights, LinkedIn Analytics, X Analytics  
-**Zmiany względem AS-IS:**
-- Dodanie zbierania danych o wydajności treści
-- Integracja z narzędziami analitycznymi
-- Dashboard z wizualizacjami i metrykami
-- System rekomendacji oparty na danych
-
----
-
-### NOWA FUNKCJA 3: A/B TESTING TREŚCI
-
-**Opis:** Możliwość tworzenia wariantów artykułów/postów i testowania, która wersja działa lepiej.
-```
-NOWI AKTORZY:
-🧪 Moduł A/B Testing
-📊 System Statystyczny
-
-────────────────────────────────────────────────────────────────
-
-PROCES TO-BE 3: TESTOWANIE WARIANTÓW TREŚCI
-────────────────────────────────────────────────────────────────
-
-👤 → [Użytkownik tworzy artykuł bazowy]
-    ↓
-    📋 Event: ArtykułBazowyUtworzony
-    ↓
-👤 → [Użytkownik aktywuje tryb A/B testing]
-    ↓
-    📋 Event: ABTestingAktywowany
-    ↓
-🤖/👤 → [System/Użytkownik generuje warianty (nagłówki, treść, CTA)]
-    ↓
-    📋 Event: WariantyWygenerowane
-    ↓
-👤 → [Użytkownik definiuje metryki sukcesu (kliknięcia, czas czytania)]
-    ↓
-    📋 Event: MetrykiZdefiniowane
-    ↓
-🧪 → [Moduł A/B Testing publikuje warianty do różnych segmentów]
-    ↓
-    📋 Event: WariantyOpublikowane
-    ↓
-🧪 → [System zbiera dane o wydajności każdego wariantu]
-    ↓
-    📋 Event: DaneTestuZebrane
-    ↓
-📊 → [System Statystyczny analizuje wyniki]
-    ↓
-    📋 Event: WynikiPrzeanalizowane
-    ↓
-🧪 → [System wyłania zwycięski wariant]
-    ↓
-    📋 Event: ZwycięzcaWyłoniony
-    ↓
-👤 → [Użytkownik otrzymuje raport z rekomendacją]
-    ↓
-    📋 Event: RaportABWysłany
-    ↓
-👤 → [Użytkownik publikuje zwycięski wariant na pełną skalę]
-    ↓
-    📋 Event: ZwycięskiWariantOpublikowany
-    ↓
-    ✅ Optymalna wersja treści zidentyfikowana i wdrożona
-```
-
-**Aktorzy:** Użytkownik, Silnik AI, Moduł A/B Testing, System Statystyczny  
-**Integracje:** System Analityczny, Plugin WWW, API Social Media  
-**Zmiany względem AS-IS:**
-- Możliwość tworzenia wielu wariantów jednej treści
-- Automatyczne rozdzielanie ruchu między warianty
-- Statystyczna analiza wyników
-- Automatyczne wybór najlepszego wariantu
-
----
-
-### NOWA FUNKCJA 4: BIBLIOTEKA TREŚCI I ZARZĄDZANIE WIEDZĄC
-
-**Opis:** Centralne repozytorium wszystkich artykułów z możliwością kategoryzacji, tagowania i ponownego wykorzystania treści.
-```
-NOWI AKTORZY:
-📚 Biblioteka Treści
-🏷️ System Tagowania
-🔄 Moduł Recyklingu Treści
-
-────────────────────────────────────────────────────────────────
-
-PROCES TO-BE 4: ZARZĄDZANIE BIBLIOTEKĄ TREŚCI
-────────────────────────────────────────────────────────────────
-
-🤖 → [Po wygenerowaniu artykuł trafia do Biblioteki]
-    ↓
-    📋 Event: ArtykułDodanyDoBiblioteki
-    ↓
-👤 → [Użytkownik dodaje tagi i kategorie do artykułu]
-    ↓
-    📋 Event: TagiDodane
-    ↓
-🏷️ → [System Tagowania indeksuje treść]
-    ↓
-    📋 Event: TreśćZaindeksowana
-    ↓
-👤 → [Użytkownik wyszukuje artykuły po tagach/kategorii]
-    ↓
-    📋 Event: WyszukiwanieWykonane
-    ↓
-📚 → [Biblioteka zwraca pasujące wyniki]
-    ↓
-    📋 Event: WynikiZwrócone
-    ↓
-👤 → [Użytkownik wybiera artykuł do ponownego wykorzystania]
-    ↓
-    📋 Event: ArtykułWybranyDoRecyklingu
-    ↓
-🔄 → [Moduł Recyklingu sugeruje aktualizacje/nowe podejście]
-    ↓
-    📋 Event: AktualizacjeZaproponowane
-    ↓
-🤖 → [Silnik AI tworzy odświeżoną wersję treści]
-    ↓
-    📋 Event: TreśćOdświeżona
-    ↓
-👤 → [Użytkownik publikuje zaktualizowaną treść]
-    ↓
-    📋 Event: ZaktualizowanaTreśćOpublikowana
-    ↓
-    ✅ Treści są zorganizowane i wielokrotnie wykorzystywane
-```
-
-**Aktorzy:** Użytkownik, Biblioteka Treści, System Tagowania, Moduł Recyklingu, Silnik AI  
-**Integracje:** Wewnętrzna baza danych, System Analityczny (dla sugestii aktualizacji)  
-**Zmiany względem AS-IS:**
-- Centralne miejsce przechowywania wszystkich treści
-- System organizacji i wyszukiwania
-- Możliwość ponownego wykorzystania i aktualizacji starych treści
-- AI-powered sugestie odnowienia treści
-
----
-
-### NOWA FUNKCJA 5: WSPÓŁPRACA ZESPOŁOWA I WORKFLOW ZATWIERDZANIA
-
-**Opis:** Możliwość pracy zespołowej z systemem ról, komentarzy i procesu zatwierdzania treści przed publikacją.
-```
-NOWI AKTORZY:
-👥 Zespół (Twórca, Edytor, Zatwierdzający, Administrator)
-💬 System Komentarzy
-✅ Workflow Zatwierdzania
-🔔 System Notyfikacji
-
-────────────────────────────────────────────────────────────────
-
-PROCES TO-BE 5: WSPÓŁPRACA NAD TREŚCIĄ
-────────────────────────────────────────────────────────────────
-
-👤 Twórca → [Użytkownik generuje artykuł]
-    ↓
-    📋 Event: ArtykułWygenerowany
-    ↓
-👤 Twórca → [Przypisuje artykuł do Edytora]
-    ↓
-    📋 Event: ArtykułPrzypisany
-    ↓
-🔔 → [System wysyła powiadomienie do Edytora]
-    ↓
-    📋 Event: PowiadomienieWysłane
-    ↓
-👤 Edytor → [Otwiera artykuł i dodaje komentarze/sugestie]
-    ↓
-    📋 Event: KomentarzeDodane
-    ↓
-👤 Edytor → [Wprowadza zmiany w treści]
-    ↓
-    📋 Event: ZmianyEdytorskieWprowadzone
-    ↓
-👤 Edytor → [Przekazuje artykuł do Zatwierdzającego]
-    ↓
-    📋 Event: ArtykułPrzesłanyDoZatwierdzenia
-    ↓
-🔔 → [System powiadamia Zatwierdzającego]
-    ↓
-    📋 Event: PowiadomienieOZatwierdzenie
-    ↓
-👤 Zatwierdzający → [Przegląda artykuł i historię zmian]
-    ↓
-    📋 Event: ArtykułPrzejrzany
-    |
-    ├── Zatwierdza ──→ 📋 Event: ArtykułZatwierdzony
-    |                      ↓
-    |                      ✅ Artykuł gotowy do publikacji
-    |
-    └── Odrzuca ──→ 📋 Event: ArtykułOdrzucony
-                       ↓
-                       🔔 Powiadomienie do Twórcy/Edytora
-                       ↓
-                       🔄 Powrót do edycji
-
-Aktorzy: Twórca, Edytor, Zatwierdzający, Administrator, System Komentarzy, Workflow, System Notyfikacji  
-Integracje: System powiadomień (email/in-app), System ról i uprawnień
-
-Zmiany względem AS-IS:
-
-* Wprowadzenie systemu ról w zespole  
-* Proces review i zatwierdzania treści  
-* System komentarzy i współpracy  
-* Śledzenie historii zmian i wersji  
-* Powiadomienia o statusie treści  
-
-
-Podsumowanie zmian TO-BE względem AS-IS  
-
-| Aspekt       | AS-IS                             | TO-BE                                         |
-|--------------|----------------------------------|-----------------------------------------------|
-| Publikacja   | Natychmiastowa, manualna         | Zaplanowana, automatyczna (Funkcja 1)         |
-| Monitorowanie| Brak                             | Pełna analityka i raportowanie (Funkcja 2)    |
-| Optymalizacja| Jednorazowa                      | A/B testing i ciągła optymalizacja (Funkcja 3)|
-| Organizacja  | Liniowa lista artykułów          | Biblioteka z kategoryzacją i recyklingiem (Funkcja 4) |
-| Praca        | Indywidualna                    | Zespołowa z workflow (Funkcja 5)               |
-| Dane         | Brak feedbacku                   | Data-driven insights i rekomendacje            |
-| Treść        | Single-use                      | Multi-use z aktualizacjami                      |
+| Aspekt         | AS-IS                        | TO-BE                                    |
+|----------------|-----------------------------|------------------------------------------|
+| Publikacja     | Manual, natychmiast         | Automatyczna, harmonogram, powiadomienia |
+| Monitorowanie  | Brak                        | Dashboard, analityka, rekomendacje       |
+| Optymalizacja  | Jednorazowa treść           | A/B testy, automatyczna selekcja         |
+| Organizacja    | Liniowa lista               | Baza wiedzy, tagowanie, recykling        |
+| Praca          | Indywidualna                | Zespołowa, rolowa, workflow              |
