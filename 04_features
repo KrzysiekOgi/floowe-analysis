@@ -1,0 +1,263 @@
+User Stories
+US 1.1: Tworzenie harmonogramu publikacji
+Jako Marketing Manager,
+chcę tworzyć miesięczny harmonogram publikacji artykułów,
+aby zaplanować strategię treści z wyprzedzeniem i zapewnić regularną obecność online.
+
+Kryteria akceptacji:
+✓ Użytkownik może wyświetlić kalendarz w widoku miesięcznym/tygodniowym/dziennym
+✓ Użytkownik może przeciągnąć artykuł na wybraną datę w kalendarzu (drag & drop)
+✓ Użytkownik może ustawić godzinę publikacji dla każdego artykułu
+✓ Użytkownik może wybrać kanały publikacji (strona WWW, Facebook, LinkedIn, X)
+✓ System wyświetla wizualnie zajętość kalendarza (liczba zaplanowanych publikacji)
+✓ Użytkownik może edytować lub usunąć zaplanowane publikacje
+✓ System zapisuje harmonogram automatycznie
+```
+
+#### US 1.2: Automatyczna publikacja zgodnie z harmonogramem
+```
+Jako Właściciel Firmy,
+chcę aby artykuły publikowały się automatycznie o wyznaczonych godzinach,
+aby nie musieć być online w momencie publikacji i zaoszczędzić czas.
+
+Kryteria akceptacji:
+✓ System automatycznie publikuje artykuły o zaplanowanej godzinie (±2 minuty)
+✓ Publikacja odbywa się na wszystkich wybranych kanałach jednocześnie
+✓ Użytkownik otrzymuje powiadomienie push/email o udanej publikacji
+✓ W przypadku błędu publikacji, użytkownik otrzymuje alert z opisem problemu
+✓ System ponawia próbę publikacji max 3 razy w przypadku błędu
+✓ Użytkownik może anulować zaplanowaną publikację do 5 minut przed jej czasem
+✓ Opublikowane artykuły są oznaczone w kalendarzu jako "Opublikowane"
+```
+
+#### US 1.3: Powiadomienia i przegląd harmonogramu
+```
+Jako Content Creator,
+chcę otrzymywać przypomnienia o nadchodzących publikacjach,
+aby mieć czas na ostateczną weryfikację treści przed publikacją.
+
+Kryteria akceptacji:
+✓ Użytkownik otrzymuje powiadomienie 24h przed zaplanowaną publikacją
+✓ Użytkownik otrzymuje powiadomienie 1h przed zaplanowaną publikacją
+✓ Użytkownik może skonfigurować preferencje powiadomień (email/push/brak)
+✓ Dashboard wyświetla podsumowanie: "Dzisiaj: X publikacji, Ten tydzień: Y publikacji"
+✓ Użytkownik może kliknąć powiadomienie i przejść bezpośrednio do artykułu
+```
+
+### Case Biznesowy
+
+Harmonogram publikacji pozwala firmom na strategiczne planowanie contentu, co zwiększa konsystencję obecności online i poprawia efektywność SEO poprzez regularność publikacji. Funkcja eliminuje konieczność manualnego publikowania w określonych godzinach, oszczędzając średnio 5-10 godzin miesięcznie na zarządzaniu treściami. Automatyzacja redukuje ryzyko pominięcia publikacji i pozwala na optymalizację czasową (publikowanie w godzinach szczytowej aktywności odbiorców).
+
+### Przegląd Techniczny
+
+| Komponent | Typ zmiany | Szczegóły implementacji |
+|-----------|------------|-------------------------|
+| **Frontend** | Rozszerzenie | • Nowy moduł: Kalendarz treści (React Calendar/FullCalendar.js)<br>• Interfejs drag-and-drop dla planowania<br>• Komponenty: TimePicker, ChannelSelector, NotificationCenter<br>• Dashboard z widgetami harmonogramu |
+| **Backend** | Nowy serwis | • **Scheduler Service**: zarządzanie zadaniami cyklicznymi<br>• **Queue Management**: kolejka zadań publikacji<br>• **Job Processor**: wykonywanie zaplanowanych publikacji<br>• API endpoints: POST /api/schedule, GET /api/schedule, PUT /api/schedule/:id, DELETE /api/schedule/:id |
+| **Baza danych** | Nowe tabele | • **scheduled_publications**: id, user_id, article_id, scheduled_date, scheduled_time, channels[], status, created_at<br>• **publication_logs**: id, schedule_id, status, attempt_number, error_message, published_at |
+| **Notification System** | Nowy moduł | • **Email Service**: integracja z SendGrid/AWS SES<br>• **Push Notifications**: Firebase Cloud Messaging<br>• **Notification Preferences**: tabela user_notification_settings |
+| **Job Scheduler** | Nowa infrastruktura | • **Cron Jobs**: sprawdzanie harmonogramu co 1 minutę<br>• **Redis Queue**: zarządzanie kolejką publikacji<br>• **Worker Processes**: obsługa równoległych publikacji |
+
+**Kluczowe integracje:**
+- **Node-cron / Bull Queue**: Zarządzanie zaplanowanymi zadaniami
+- **Redis**: Cache i queue management
+- **SendGrid/AWS SES**: Wysyłka powiadomień email
+- **Firebase**: Push notifications do aplikacji mobilnej/webowej
+
+**Stos technologiczny:**
+```
+Backend: Node.js + Bull Queue + Redis
+Frontend: React + FullCalendar.js + React DnD
+Database: PostgreSQL (nowe tabele)
+Messaging: Redis Pub/Sub
+Monitoring: Sentry (śledzenie błędów publikacji)
+```
+
+---
+
+## FUNKCJA 2: ANALITYKA I RAPORTOWANIE SKUTECZNOŚCI TREŚCI
+
+### User Stories
+
+#### US 2.1: Dashboard analityczny
+```
+Jako Marketing Manager,
+chcę widzieć kluczowe metryki wydajności moich treści w jednym miejscu,
+aby szybko ocenić skuteczność strategii content marketingowej.
+
+Kryteria akceptacji:
+✓ Dashboard wyświetla główne KPI: całkowite wyświetlenia, zaangażowanie, ruch organiczny
+✓ Użytkownik widzi porównanie wydajności: ten miesiąc vs poprzedni miesiąc
+✓ Wykresy pokazują trendy w czasie (ostatnie 7/30/90 dni)
+✓ Dashboard wyświetla "Top 5 artykułów" według wyświetleń i zaangażowania
+✓ Dane odświeżają się automatycznie co 24h
+✓ Użytkownik może wyeksportować raport do PDF/Excel
+✓ Dashboard pokazuje pozycję w Google dla kluczowych fraz (średnia pozycja)
+```
+
+#### US 2.2: Szczegółowa analityka artykułu
+```
+Jako Content Creator,
+chcę widzieć szczegółowe statystyki dla każdego opublikowanego artykułu,
+aby zrozumieć co działa, a co wymaga poprawy.
+
+Kryteria akceptacji:
+✓ Dla każdego artykułu dostępne są metryki: wyświetlenia, unikalni czytelnicy, czas czytania, bounce rate
+✓ Widoczne są statystyki social media: polubienia, udostępnienia, komentarze (per platforma)
+✓ System pokazuje źródła ruchu: organiczny, social media, bezpośredni, referral
+✓ Wykres pokazuje wydajność artykułu w czasie od publikacji
+✓ Użytkownik widzi słowa kluczowe, dla których artykuł rankuje w Google
+✓ System porównuje wydajność artykułu ze średnią dla kategorii
+```
+
+#### US 2.3: Rekomendacje AI oparte na danych
+```
+Jako Właściciel Firmy,
+chcę otrzymywać automatyczne rekomendacje optymalizacji treści,
+aby zwiększać skuteczność content marketingu bez dogłębnej analizy danych.
+
+Kryteria akceptacji:
+✓ System analizuje dane i generuje 3-5 rekomendacji tygodniowo
+✓ Rekomendacje obejmują: najlepsze dni/godziny publikacji, popularne tematy, optymalizację słów kluczowych
+✓ Dla artykułów o niskiej wydajności system sugeruje konkretne działania (np. "Zaktualizuj nagłówek", "Dodaj więcej obrazów")
+✓ Użytkownik może oznaczyć rekomendacje jako "Zrealizowane" lub "Odrzucone"
+✓ System uczy się z feedbacku użytkownika i dostosowuje przyszłe rekomendacje
+✓ Alert o artykułach, które tracą pozycje w Google (monitoring SEO)
+```
+
+### Case Biznesowy
+
+Moduł analityczny przekształca surowe dane w actionable insights, pozwalając firmom optymalizować strategię treści w oparciu o rzeczywiste wyniki, a nie intuicję. Integracja danych ze wszystkich kanałów (strona WWW, social media, SEO) w jednym dashboardzie oszczędza 3-5 godzin tygodniowo na zbieraniu danych z różnych źródeł. AI-powered rekomendacje demokratyzują dostęp do zaawansowanej analizy marketingowej, umożliwiając małym firmom konkurowanie z większymi graczami dzięki data-driven decision making.
+
+### Przegląd Techniczny
+
+| Komponent | Typ zmiany | Szczegóły implementacji |
+|-----------|------------|-------------------------|
+| **Analytics Engine** | Nowy serwis | • **Data Aggregation Service**: zbieranie danych z multiple źródeł<br>• **Metrics Calculator**: obliczanie KPI i metryk<br>• **Trend Analysis**: analiza trendów i anomalii<br>• **Recommendation Engine**: AI-powered sugestie |
+| **Frontend** | Nowy moduł | • Dashboard z interaktywnymi wykresami (Chart.js/Recharts)<br>• Komponenty: MetricCards, TrendCharts, TopPerformers<br>• Filtrowanie: zakres dat, kategorie, kanały<br>• Export do PDF/Excel (jsPDF, ExcelJS) |
+| **Backend API** | Nowe endpointy | • GET /api/analytics/dashboard<br>• GET /api/analytics/article/:id<br>• GET /api/analytics/recommendations<br>• POST /api/analytics/export<br>• GET /api/analytics/trends |
+| **Baza danych** | Nowe tabele | • **article_metrics**: id, article_id, date, views, unique_visitors, avg_time, bounce_rate, traffic_sources{}<br>• **social_metrics**: id, article_id, platform, likes, shares, comments, date<br>• **seo_rankings**: id, article_id, keyword, position, date<br>• **recommendations**: id, user_id, type, content, status, created_at |
+| **Data Pipeline** | Nowa infrastruktura | • **ETL Process**: Extract-Transform-Load dla danych external<br>• **Scheduled Jobs**: codzienne pobieranie danych (cron)<br>• **Data Warehouse**: agregacja historycznych danych |
+
+**Kluczowe integracje:**
+- **Google Analytics API**: Dane o ruchu na stronie WWW
+- **Google Search Console API**: Pozycje w wyszukiwarce, słowa kluczowe
+- **Facebook Graph API**: Statystyki postów na Facebook
+- **LinkedIn Marketing API**: Metryki zaangażowania LinkedIn
+- **Twitter/X API v2**: Dane o wydajności tweetów
+- **Plugin Analytics Module**: Zbieranie danych bezpośrednio ze strony użytkownika
+
+**Stos technologiczny:**
+```
+Backend: Node.js + Python (dla ML recommendations)
+ML/AI: TensorFlow.js / scikit-learn (pattern recognition)
+Frontend: React + Recharts + D3.js (wizualizacje)
+Database: PostgreSQL + TimescaleDB (time-series data)
+Cache: Redis (cache metryk)
+ETL: Apache Airflow / Node-cron
+Export: jsPDF, ExcelJS, Puppeteer (PDF generation)
+```
+
+---
+
+## FUNKCJA 3: A/B TESTING TREŚCI
+
+### User Stories
+
+#### US 3.1: Tworzenie testów A/B
+```
+Jako Content Strategist,
+chcę tworzyć warianty artykułów (różne nagłówki, CTA, obrazy),
+aby empirycznie sprawdzić, która wersja generuje lepsze wyniki.
+
+Kryteria akceptacji:
+✓ Użytkownik może utworzyć test A/B dla istniejącego artykułu
+✓ System generuje automatycznie 2-3 warianty nagłówków używając AI
+✓ Użytkownik może manualnie edytować każdy wariant (nagłówek, lead, CTA, obrazy)
+✓ Użytkownik definiuje metrykę sukcesu: CTR, czas czytania, konwersje, zaangażowanie
+✓ Użytkownik ustawia rozmiar próbki (% ruchu na każdy wariant): 50/50 lub custom
+✓ Użytkownik określa czas trwania testu (min. 7 dni, max. 30 dni)
+✓ System waliduje, że warianty różnią się wystarczająco (min. 15% różnicy)
+```
+
+#### US 3.2: Monitorowanie testów w czasie rzeczywistym
+```
+Jako Marketing Manager,
+chcę śledzić wyniki testów A/B w trakcie ich trwania,
+aby móc szybko reagować na znaczące różnice w wydajności.
+
+Kryteria akceptacji:
+✓ Dashboard pokazuje aktywne testy A/B z kluczowymi metrykami
+✓ Dla każdego testu widoczny jest postęp: % zrealizowanej próbki, pozostały czas
+✓ Wykresy porównują wydajność wariantów w czasie rzeczywistym
+✓ System oblicza i wyświetla "confidence level" (poziom pewności statystycznej)
+✓ Alert gdy jeden wariant osiąga statystycznie istotną przewagę (95% confidence)
+✓ Użytkownik może przedwcześnie zakończyć test jeśli wyniki są jednoznaczne
+✓ Możliwość wstrzymania testu i publikacji zwycięskiego wariantu natychmiastowo
+```
+
+#### US 3.3: Raportowanie i wnioski z testów
+```
+Jako Content Creator,
+chcę otrzymać szczegółowy raport po zakończeniu testu A/B,
+aby zrozumieć dlaczego jeden wariant wygrał i zastosować te wnioski w przyszłości.
+
+Kryteria akceptacji:
+✓ Raport pokazuje końcowe wyniki: zwycięzca, różnica %, confidence level
+✓ Szczegółowe porównanie metryk: wariant A vs wariant B w tabeli
+✓ System wyjaśnia co mogło wpłynąć na wynik (AI-generated insights)
+✓ Raport zawiera rekomendacje: "W przyszłych artykułach stosuj [pattern]"
+✓ Historia wszystkich testów dostępna w archiwum z możliwością filtrowania
+✓ Możliwość zapisania zwycięskiego wariantu jako szablon
+✓ Eksport raportu do PDF z wizualizacjami
+```
+
+### Case Biznesowy
+
+A/B testing eliminuje zgadywanie w tworzeniu treści, zastępując je data-driven decyzjami, co zwiększa ROI content marketingu średnio o 20-30%. Systematyczne testowanie nagłówków, CTA i formatów treści buduje bazę wiedzy o preferencjach odbiorców specyficznych dla danej branży. Funkcja jest szczególnie wartościowa dla firm e-commerce i SaaS, gdzie niewielka poprawa CTR (np. z 2% do 3%) może oznaczać tysiące złotych dodatkowego przychodu miesięcznie.
+
+### Przegląd Techniczny
+
+| Komponent | Typ zmiany | Szczegóły implementacji |
+|-----------|------------|-------------------------|
+| **A/B Testing Engine** | Nowy serwis | • **Variant Manager**: zarządzanie wariantami<br>• **Traffic Splitter**: inteligentny routing użytkowników<br>• **Statistical Analyzer**: testy istotności statystycznej<br>• **AI Insights Generator**: analiza przyczyn wyników |
+| **Frontend** | Nowy moduł | • Test Creator: wizard do tworzenia testów<br>• Variant Editor: side-by-side porównanie wariantów<br>• Live Dashboard: real-time monitoring testów<br>• Report Viewer: wizualizacja wyników |
+| **Backend API** | Nowe endpointy | • POST /api/ab-tests (create)<br>• GET /api/ab-tests (list)<br>• GET /api/ab-tests/:id (details)<br>• PUT /api/ab-tests/:id/stop<br>• GET /api/ab-tests/:id/report<br>• POST /api/variants/generate (AI variants) |
+| **Baza danych** | Nowe tabele | • **ab_tests**: id, article_id, name, goal_metric, duration, traffic_split, status, started_at, ended_at<br>• **variants**: id, test_id, name, title, content, image_url, is_control, is_winner<br>• **variant_metrics**: id, variant_id, timestamp, views, clicks, conversions, time_spent<br>• **test_results**: id, test_id, winner_id, confidence_level, summary, insights{} |
+| **Traffic Router** | Nowa infrastruktura | • **Load Balancer Logic**: routing do wariantów<br>• **Session Management**: consistent experience per user<br>• **Cookie/Token**: tracking variant assignment |
+| **Statistical Module** | Nowy moduł | • **Chi-square test**: dla CTR i konwersji<br>• **T-test**: dla czasu czytania<br>• **Bayesian Analysis**: continuous monitoring<br>• **Sample Size Calculator**: min. próbka dla wiarygodności |
+
+**Kluczowe integracje:**
+- **Silnik AI Floowe**: Generowanie wariantów nagłówków i treści
+- **Analytics Engine**: Zbieranie metryk wydajności wariantów
+- **CDN/Cache**: Serwowanie różnych wariantów bez opóźnień
+- **Cookie Management**: Tracking użytkowników między sesjami
+
+**Stos technologiczny:**
+```
+Backend: Node.js + Python (statistical analysis)
+Statistics: SciPy / statsmodels (testy statystyczne)
+Frontend: React + Recharts (comparison charts)
+Database: PostgreSQL + materialized views (agregacje)
+Routing: Nginx / Node.js middleware (traffic split)
+ML: GPT-4 API (generating variant suggestions + insights)
+Session: Redis (user-variant mapping)
+
+**Algorytmy statystyczne:**
+- Chi-square test of independence
+- Student's t-test
+- Bayesian A/B testing (continuous monitoring)
+- Sequential testing (early stopping)
+
+**Matryca priorytetów implementacji**
+
+| Funkcja         | Złożoność | Wartość biznesowa       | Priorytet | Czas realizacji   |
+|-----------------|-----------|------------------------|-----------|--------------------|
+| Harmonogram publikacji | Średnia   | Wysoka           | 🔴 1      | 4-6 tygodni       |
+| Analityka       | Wysoka    | Bardzo wysoka           | 🔴 1      | 8-10 tygodni      |
+| A/B Testing     | Wysoka    | Średnia / Wysoka        | 🟡 2      | 6-8 tygodni       |
+
+**Rekomendowana kolejność:**
+- Faza 1: Harmonogram publikacji (quick win, duże zainteresowanie użytkowników)
+- Faza 2: Analityka (fundament dla dalszych optymalizacji)
+- Faza 3: A/B Testing (wymaga działającej analityki)
