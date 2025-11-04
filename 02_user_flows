@@ -1,0 +1,94 @@
+Kluczowe przepływy użytkownika i procesy
+1. Procesy rejestracji i logowania
+Rejestracja
+Krok 1: Użytkownik klika przycisk "Zarejestruj się" przy wybranym planie cenowym (Free, Basic, Standard lub Premium)
+Krok 2: Użytkownik podaje niezbędne informacje o swojej działalności i grupie docelowej (wymagane do personalizacji treści)
+Krok 3: System tworzy konto użytkownika
+Krok 4: Konto zostaje aktywowane i użytkownik uzyskuje dostęp do aplikacji
+Logowanie
+Krok 1: Użytkownik klika przycisk "Zaloguj się" na stronie głównej
+Krok 2: Użytkownik wprowadza dane logowania
+Krok 3: System weryfikuje dane i przekierowuje do panelu użytkownika
+2. Główne przepływy użytkownika (User Flows)
+Przepływ 1: Generowanie artykułu z wykorzystaniem pomysłów Floowe
+Krok 1: Floowe analizuje treści z branży użytkownika, które cieszą się najwyższą popularnością w wynikach wyszukiwania
+Krok 2: System tworzy listę pomysłów na artykuł na podstawie analizy
+Krok 3: Użytkownik przegląda wygenerowane pomysły
+Krok 4: Użytkownik wybiera pomysły, które mu odpowiadają
+Krok 5: System generuje artykuł, naśladując proces tworzenia treści przez doświadczonego copywritera
+Krok 6: System wykorzystuje słowa kluczowe i kombinacje słów kluczowych do optymalizacji SEO
+Krok 7: Artykuł zostaje wygenerowany i jest gotowy do edycji lub publikacji
+Przepływ 2: Tworzenie artykułu według własnego pomysłu
+Krok 1: Użytkownik wybiera opcję tworzenia treści według własnego pomysłu
+Krok 2: Użytkownik wprowadza temat lub założenia artykułu
+Krok 3: System generuje artykuł na podstawie podanego tematu
+Krok 4: System optymalizuje treść pod kątem SEO, wplatając odpowiednie słowa kluczowe
+Krok 5: Artykuł zostaje wygenerowany i jest gotowy do edycji lub publikacji
+Przepływ 3: Edycja artykułu i grafik
+Krok 1: Użytkownik otwiera wygenerowany artykuł
+Krok 2: Użytkownik modyfikuje treść artykułu w edytorze (podobnym do dokumentu WORD)
+Krok 3: Użytkownik dodaje lub edytuje grafiki, wybierając jedną z opcji:
+
+Własne zdjęcie
+Zdjęcia z bezpłatnej bazy zdjęć (realistyczne, licencjonowane grafiki)
+Zdjęcia generowane przez AI
+
+Krok 4: Użytkownik zapisuje zmiany
+Krok 5: Zaktualizowany artykuł jest gotowy do publikacji
+Przepływ 4: Automatyczna publikacja na stronie internetowej
+Krok 1: Użytkownik instaluje plugin Floowe na swojej stronie internetowej
+Krok 2: Plugin łączy się ze stroną użytkownika
+Krok 3: Użytkownik wybiera artykuł do publikacji
+Krok 4: Użytkownik klika opcję publikacji na stronie internetowej
+Krok 5: System automatycznie publikuje artykuł na stronie użytkownika bez ręcznej interwencji
+Przepływ 5: Publikacja w mediach społecznościowych
+Krok 1: Użytkownik łączy swoje konto Floowe z kontami w mediach społecznościowych (Facebook, LinkedIn, X/Twitter)
+Krok 2: Po stworzeniu artykułu, posty na social media tworzą się automatycznie
+Krok 3: Użytkownik przegląda automatycznie wygenerowane posty
+Krok 4: Użytkownik klika opcję publikacji za pomocą jednego ruchu
+Krok 5: System publikuje treści jednocześnie na wybranych platformach społecznościowych (Facebook, LinkedIn, X/Twitter)
+3. Przepływy płatności
+Wybór planu Free
+Krok 1: Użytkownik klika "Zarejestruj się" przy planie Free
+Krok 2: Użytkownik zakłada konto
+Krok 3: System aktywuje plan Free (3 artykuły z treściami na social media za darmo)
+Krok 4: Użytkownik otrzymuje dostęp do funkcji planu Free
+Wybór planu płatnego (Basic/Standard/Premium)
+Krok 1: Użytkownik wybiera plan (Basic 250 PLN/mies., Standard 350 PLN/mies. lub Premium 450 PLN/mies. - ceny promocyjne na 3 miesiące z rabatem 50%)
+Krok 2: Użytkownik klika "Zarejestruj się" przy wybranym planie
+Krok 3: System przekierowuje do procesu rejestracji i płatności
+Krok 4: Użytkownik wprowadza dane rozliczeniowe i dokonuje płatności
+Krok 5: System potwierdza płatność i aktywuje wybrany plan
+Krok 6: Użytkownik otrzymuje dostęp do funkcji zgodnych z wykupionym planem:
+
+Basic: 8 artykułów/miesiąc
+Standard: 12 artykułów/miesiąc
+Premium: 20 artykułów/miesiąc
+
+Krok 7: Po 3 miesiącach system automatycznie przechodzi na standardową cenę (bez rabatu 50%)
+4. Integracje z systemami zewnętrznymi
+Integracja ze stroną internetową użytkownika
+Krok 1: Użytkownik pobiera plugin Floowe
+Krok 2: Użytkownik instaluje plugin na swojej stronie internetowej
+Krok 3: Plugin łączy się z systemem Floowe
+Krok 4: Połączenie umożliwia automatyczną publikację artykułów bezpośrednio na stronie użytkownika
+Integracja z Facebook
+Krok 1: Użytkownik w panelu Floowe wybiera opcję połączenia z Facebook
+Krok 2: System przekierowuje do autoryzacji Facebook
+Krok 3: Użytkownik autoryzuje dostęp Floowe do swojego konta Facebook
+Krok 4: Połączenie zostaje ustanowione, umożliwiając automatyczną publikację postów
+Integracja z LinkedIn
+Krok 1: Użytkownik w panelu Floowe wybiera opcję połączenia z LinkedIn
+Krok 2: System przekierowuje do autoryzacji LinkedIn
+Krok 3: Użytkownik autoryzuje dostęp Floowe do swojego konta LinkedIn
+Krok 4: Połączenie zostaje ustanowione, umożliwiając automatyczną publikację postów
+Integracja z X (Twitter)
+Krok 1: Użytkownik w panelu Floowe wybiera opcję połączenia z X (Twitter)
+Krok 2: System przekierowuje do autoryzacji X
+Krok 3: Użytkownik autoryzuje dostęp Floowe do swojego konta X
+Krok 4: Połączenie zostaje ustanowione, umożliwiając automatyczną publikację postów
+Integracja z innymi narzędziami marketingowymi
+Krok 1: Użytkownik wybiera integrację z dostępnymi platformami (CRM, systemy e-mail marketingowe, narzędzia do automatyzacji marketingu)
+Krok 2: System przekierowuje do procesu autoryzacji wybranej platformy
+Krok 3: Użytkownik autoryzuje połączenie
+Krok 4: Integracja zostaje ustanowiona, umożliwiając płynne zarządzanie kampaniami marketingowymi
