@@ -1,0 +1,243 @@
+# Floowe - Analiza Aplikacji (Overview)
+
+## Core Produktu
+
+Floowe to platforma do automatycznego tworzenia i publikowania treści marketingowych wykorzystująca sztuczną inteligencję. Aplikacja generuje artykuły blogowe oraz posty na media społecznościowe, naśladując proces pracy doświadczonego copywritera.
+
+**Główny mechanizm działania:**
+- Analiza popularnych treści w branży użytkownika
+- Generowanie artykułów zoptymalizowanych pod SEO
+- Automatyczna publikacja na stronie internetowej i social mediach
+- Edycja treści w interfejsie przypominającym MS Word
+
+## Problemy Rozwiązywane przez Floowe
+
+1. **Czasochłonność tworzenia contentu** - automatyzacja procesu copywritingu
+2. **Brak kompetencji copywriterskich** - umożliwienie tworzenia profesjonalnych treści osobom bez doświadczenia
+3. **Niska widoczność w wyszukiwarkach** - automatyczna optymalizacja SEO z wykorzystaniem słów kluczowych
+4. **Nieregularność publikacji** - automatyzacja publikowania treści
+5. **Rozproszenie narzędzi** - centralizacja procesu tworzenia, edycji i publikacji w jednym miejscu
+6. **Zarządzanie obecnością w social media** - automatyczne generowanie i publikacja postów
+
+## Główne Funkcjonalności
+
+### Generowanie Treści
+- Analiza treści z branży użytkownika cieszących się najwyższą popularnością w wynikach wyszukiwania
+- Generowanie listy pomysłów na artykuły
+- Tworzenie treści według własnego pomysłu użytkownika
+- Wykorzystanie wszystkich możliwych kombinacji słów kluczowych dla SEO
+
+### Edycja
+- Interfejs edycji przypominający dokument WORD
+- Modyfikacja wygenerowanej treści artykułu
+- Edycja grafiki
+- Zarządzanie zdjęciami: własne, z bezpłatnej bazy lub generowane przez AI
+
+### Publikacja
+- Automatyczna publikacja postów na Facebook
+- Automatyczna publikacja postów na LinkedIn
+- Automatyczna publikacja postów na X (Twitter)
+- Automatyczna publikacja na stronie internetowej użytkownika (przez plugin)
+- Publikacja "za pomocą jednego ruchu"
+- Automatyczne tworzenie postów social media po stworzeniu artykułu
+
+### Analiza
+- Monitorowanie wzrostu ruchu na stronie
+- Analiza SEO
+- Śledzenie poprawy pozycji w Google
+
+### Personalizacja
+- Dostosowanie stylu, tonu i formatu treści do tożsamości marki
+- Wybór tematów i słów kluczowych
+- Obsługa wszystkich języków świata (głównie języki europejskie)
+
+## Grupa Docelowa
+
+**Osoby i firmy, które:**
+- Pragną prezentować swoją wiedzę, umiejętności i oferty w atrakcyjny sposób
+- Nie chcą poświęcać zbyt wiele czasu na tworzenie treści
+- Potrzebują przyciągnąć większą liczbę odbiorców i potencjalnych klientów
+
+**Konkretne segmenty:**
+- Małe przedsiębiorstwa
+- Duże przedsiębiorstwa
+- Przedsiębiorcy rozpoczynający działalność online
+- Firmy rozwijające działalność na skalę globalną (wielojęzyczność)
+
+**Obecni użytkownicy (metryki ze strony):**
+- 146 zadowolonych użytkowników
+- 7,853 wygenerowanych artykułów
+- 237 poprawionych pozycji w Google
+
+## Model Biznesowy
+
+### Model SaaS (Software as a Service) z subskrypcją miesięczną
+
+**Plany cenowe:**
+
+| Plan | Cena regularna | Cena promocyjna | Artykuły/miesiąc | Publikacja strona WWW |
+|------|---------------|-----------------|------------------|----------------------|
+| Free | 0 PLN | - | 3 | ❌ |
+| Basic | 500 PLN | 250 PLN | 8 | ✅ |
+| Standard | 700 PLN | 350 PLN | 12 | ✅ |
+| Premium | 900 PLN | 450 PLN | 20 | ✅ |
+
+**Szczegóły promocji:**
+- Rabat 50% przez pierwsze 3 miesiące użytkowania
+- Dotyczy planów: Basic, Standard, Premium
+
+**Wspólne funkcje wszystkich planów płatnych:**
+- Automatyczna publikacja postów na Facebook
+- Automatyczna publikacja postów na LinkedIn
+- Automatyczna publikacja postów na X (Twitter)
+
+**Różnicowanie:**
+- Plan Free: brak publikacji na stronie internetowej
+- Plany płatne: różnią się liczbą artykułów miesięcznie i dostępem do publikacji na własnej stronie
+
+**Strategia monetyzacji:**
+- Freemium (darmowy plan jako próbnik)
+- Upselling do wyższych planów (więcej artykułów)
+- Promocja czasowa jako zachęta do zakupu
+- Model oparty na limicie treści (pay-per-volume)
+
+## Punkty Integracji z Zewnętrznymi Usługami
+
+### Media Społecznościowe (natywna integracja)
+- **Facebook** - automatyczna publikacja postów
+- **LinkedIn** - automatyczna publikacja postów
+- **X (Twitter)** - automatyczna publikacja postów
+
+### CMS i Strony Internetowe
+- **Plugin do strony internetowej** - automatyczna publikacja artykułów bezpośrednio na stronie użytkownika bez ręcznej interwencji
+
+### Bazy Grafik
+- **Bezpłatne bazy zdjęć** (typ niespecyfikowany - prawdopodobnie Unsplash, Pexels lub podobne)
+- **Generatory AI do tworzenia grafik**
+
+### Narzędzia Marketingowe (wspomniane w FAQ)
+- **Systemy CRM** - integracja możliwa
+- **Systemy e-mail marketingowe** - integracja możliwa
+- **Narzędzia do automatyzacji marketingu** - integracja możliwa
+
+### SEO
+- Analiza popularnych fraz kluczowych z wyszukiwarek
+- Inteligentne wplatanie słów kluczowych w treści
+
+**Uwaga:** Szczegóły techniczne integracji (API, webhooks, itp.) nie są publicznie dostępne na stronie.
+
+## Ocena UX/UI
+
+### Struktura Strony
+
+**Nawigacja:**
+- Czytelne menu główne: Strona główna, Nasze atuty, Funkcjonalności, Cennik, Blog, FAQ
+- Wersje językowe: Polski, Angielski, Niemiecki, Holenderski
+- CTA "Zaloguj się" widoczne w nawigacji
+- Powtarzające się CTA "Przetestuj za darmo!" w kluczowych miejscach
+
+**Architektura informacji:**
+- Logiczny przepływ: Problem → Rozwiązanie → Funkcje → Proces → Cennik → FAQ
+- Proces "3 prostych kroków": Konfiguracja i generacja → Edycja artykułów → Automatyczne publikowanie
+
+### Mocne Strony UX
+
+**Prostota komunikacji:**
+- Jasna propozycja wartości: "Automatyczne tworzenie i publikowanie treści na Twojej stronie oraz social mediach"
+- Konkretne korzyści wyrażone w punktach
+- Metafora "jak w dokumencie WORD" obniża barierę wejścia
+
+**Przejrzystość procesu:**
+- Wizualizacja 3 kroków użytkowania
+- Każdy krok ma dedykowaną sekcję z opisem
+- CTA przy każdym kroku
+
+**Transparentność cennika:**
+- 4 plany cenowe wyraźnie wyróżnione
+- Promocja 50% jest mocno zaakcentowana ("50% gratis")
+- Jasne porównanie funkcji między planami
+- Konkretne wartości (liczba artykułów/miesiąc)
+
+**Budowanie zaufania:**
+- Metryki społeczne: 7,853 artykułów, 146 użytkowników, 237 poprawionych pozycji
+- Sekcja "Co mówią o nas klienci" z testimonialami (Damian Wasilewski, Mateusz Kopta)
+- Logo partnerów w sekcji "Zaufali nam"
+- Rozbudowana sekcja FAQ (13 pytań)
+
+**Onboarding:**
+- Plan Free (0 PLN) jako low-barrier entry point
+- Wielokrotne CTA "Przetestuj za darmo!" i "Przetestuj niezobowiązująco!"
+- Brak wymogu karty kredytowej dla planu Free
+
+### Słabe Strony / Obszary do Poprawy
+
+**Brak wizualizacji produktu:**
+- Strona nie pokazuje screenshotów rzeczywistego interfejsu aplikacji
+- Brak wideo demo pokazującego działanie narzędzia
+- Trudno ocenić rzeczywisty user experience aplikacji
+- Ikony i ilustracje są generyczne (placeholder "Image")
+
+**Ograniczona dokumentacja techniczna:**
+- Brak informacji o szczegółach integracji
+- Nie wiadomo, jak działa plugin do strony WWW
+- Brak case studies pokazujących konkretne wyniki
+
+**Testimoniale:**
+- Tylko 2 opinie klientów (powtórzone dwukrotnie w karuzeli)
+- Brak szczegółów (branża, wielkość firmy, konkretne wyniki)
+- Ogólnikowe stwierdzenia bez liczb
+
+**Metryki:**
+- 146 użytkowników to relatywnie niska liczba (może budzić wątpliwości co do dojrzałości produktu)
+- Brak informacji o średnim wzroście ruchu czy ROI
+
+**Proces onboardingu:**
+- Nie jest jasne, jak wygląda proces konfiguracji konta
+- Brak informacji o czasie potrzebnym na setup
+- Nie wiadomo, jakie dane trzeba podać przy rejestracji
+
+**Funkcjonalność "obsługa wszystkich języków świata":**
+- W FAQ wspomniane są "główne języki europejskie oraz kilka dodatkowych"
+- Sprzeczność między obietnicą a rzeczywistością
+
+### Ocena Designu
+
+**Styl wizualny:**
+- Współczesny, minimalistyczny design
+- Układ single-page z sekcjami
+- Responsywność nie jest weryfikowalna bez dostępu do strony
+
+**Typografia i czytelność:**
+- Hierarchia treści jest zachowana
+- Nagłówki wyraźnie oddzielone
+- Tekst podzielony na strawne sekcje
+
+**CTA (Call-to-Action):**
+- Konsekwentne użycie "Przetestuj za darmo!" i "Zarejestruj się"
+- CTA powtarzane w strategicznych miejscach
+- Wyraźne przyciski w cenniku
+
+### Wnioski UX/UI
+
+**Ocena ogólna: 7/10**
+
+**Plusy:**
+- Przejrzysta komunikacja wartości biznesowej
+- Logiczny przepływ informacji
+- Transparentny cennik z promocją
+- Niski próg wejścia (plan Free)
+- Rozbudowane FAQ
+
+**Minusy:**
+- Brak wizualizacji produktu (największy mankament)
+- Słabe testimoniale (mała liczba, brak szczegółów)
+- Niewielka baza użytkowników (może obniżać zaufanie)
+- Brak case studies i konkretnych przykładów
+
+**Rekomendacje:**
+1. Dodać interaktywne demo lub wideo walkthrough
+2. Pokazać rzeczywiste screenshoty interfejsu
+3. Rozbudować testimoniale o konkretne wyniki (liczby, wykresy)
+4. Dodać case studies z różnych branż
+5. Zwiększyć transparentność procesu onboardingu
+6. Skorygować sprzeczność w komunikacji o obsłudze języków
